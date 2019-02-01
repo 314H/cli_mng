@@ -1,22 +1,37 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-    <h1>Seja Bem Vindo ao Unopar Leads - Campus Cianorte</h1>
 
-    {% if user.is_authenticated %}
-        <p>Olá {{user.username }}</p>
-        <a href="{%url 'logout' %}">Sair</a>
-    {% else %}
-        <a href="{% url 'login' %}">Entrar</a>
-    {% endif%}
+{% block title %} Seja bem vindo {% endblock %}
 
-</body>
-</html>
+{% block main %}
+
+
+    <div class="row">
+        <div class="col">
+
+        </div>
+
+        <div class="col-6">
+            <h1>Sistema de Leads Unopar Cianorte</h1>
+        </div>
+
+
+        <div class="col-sm">
+            {% if user.is_authenticated %}
+                <p>Ola {{ user.username }}</p>
+                <a href="{% url 'logout' %}">Sair</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-info">Entrar</a>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">by PH</span>
+      </div>
+    </footer>
+{% endblock %}
